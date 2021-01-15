@@ -1,10 +1,13 @@
 \documentclass{article}
 
-\usepackage{amsmath}					% For the aligned environment
+\usepackage{amsmath}						% For the aligned environment
 \usepackage[margin=1in]{geometry}
+\usepackage{nccmath}						% For the fleqn environment
 
-\newcommand{\explnspacei}{\hspace{0in}}		% Space to be added before explanation in equations
-\newcommand{\explnspaceii}{\hspace{0in}}
+\newcommand{\explnspacei}{\hspace{1.59in}}		% Space to be added before explanation in equations
+\newcommand{\explnspaceii}{\hspace{3.04in}}
+\newcommand{\explnspaceiii}{\hspace{1in}}
+\newcommand{\explnspaceiv}{\hspace{3.61in}}
 
 \allowdisplaybreaks
 
@@ -20,7 +23,8 @@ $\begin{aligned}
 & = \int_0^4 \frac{\ln{x}}{\sqrt{4 - (x - 2) ^ 2}} \, dx \\
 & = \int_{-\pi / 2}^{\pi / 2} \frac{2 \ln{(2 + 2 \sin \theta)}}{\sqrt{4 - 4 \sin^2 \theta}} \cos \theta \, d\theta & \explnspacei x - 2 = 2 \sin \theta \\
 & = \int_{-\pi / 2}^{\pi / 2} \ln{(2(1 + \sin \theta))} \, d\theta & \explnspacei \text{Simplification} \\
-& = \int_{-\pi / 2}^{\pi / 2} \ln{2} + \ln{(1 + \sin \theta)} \, d\theta \\
+& = \int_{-\pi / 2}^{\pi / 2} (\ln{2} + \ln{(1 + \sin \theta)}) \, d\theta \\
+& = \int_{-\pi / 2}^{\pi / 2} \ln 2 \, d\theta + \int_{-\pi / 2}^{\pi / 2} \ln{(1 + \sin \theta)} \, d\theta \\
 & = \theta \ln 2 \biggr\rvert_{-\pi / 2}^{\pi / 2} + \int_{-\pi / 2}^{\pi / 2} \ln{(1 + \sin \theta)} \, d\theta \\	% \big, \bigr, \Bigr and \Biggr are also available.
 & = \pi \ln 2 + \int_{-\pi / 2}^{\pi / 2} \ln{(1 + \sin \theta)} \, d\theta
 \end{aligned}$
@@ -32,19 +36,80 @@ I_1 & = \int_{-\pi / 2}^{\pi / 2} \ln{(1 + \sin \theta)} \, d\theta \\
 & = \int_{-\pi / 2}^{\pi / 2} \ln{(1 - \sin \phi)} \, d\phi \\
 & = \int_{-\pi / 2}^{\pi / 2} \ln{(1 - \sin \theta)} \, d\theta & \explnspaceii \phi & = \theta
 \end{aligned}$
-\\ \\ \\
+\\ \\
 \par\noindent
-$\begin{aligned}
+% I switched to using the fleqn and alignat* environments below to allow page break.
+% You also need to specify \allowdisplaybreaks which I have done above.
+{
+\setlength{\abovedisplayskip}{0pt}
+\begin{fleqn}
+\begin{alignat*}{2}
 2I_1 & = \int_{-\pi / 2}^{\pi / 2} \ln{(1 + \sin \theta)} \, d\theta + \int_{-\pi / 2}^{\pi / 2} \ln{(1 - \sin \theta)} \, d\theta \\
-& = \int_{-\pi / 2}^{\pi / 2} \ln{(1 + \sin \theta)} + \ln{(1 - \sin \theta)} \, d\theta \\
+& = \int_{-\pi / 2}^{\pi / 2} (\ln{(1 + \sin \theta)} + \ln{(1 - \sin \theta)}) \, d\theta \\
 & = \int_{-\pi / 2}^{\pi / 2} \ln{\{(1 + \sin \theta)(1 - \sin \theta)\}} \, d\theta \\
 & = \int_{-\pi / 2}^{\pi / 2} \ln{(1 - \sin^2 \theta)} \, d\theta \\
 & = \int_{-\pi / 2}^{\pi / 2} \ln{\cos^2 \theta} \, d\theta \\
 & = \int_{-\pi / 2}^{\pi / 2} 2 \ln{\cos \theta} \, d\theta \\
 & = 2 \int_{-\pi / 2}^{\pi / 2} \ln{\cos \theta} \, d\theta
+\end{alignat*}
+\end{fleqn}
+}
+\\
+\par\noindent
+$\begin{aligned}
+I_1 = \int_{-\pi / 2}^{\pi / 2} \ln{\cos \theta} \, d\theta
 \end{aligned}$
-
+\\ \\ \\
+\par\noindent
+$\begin{aligned}
+I_2 & = \int_{0}^{\pi / 2} \ln{\cos \theta} \, d\theta \\
+& = \int_{\pi / 2}^{0} -\ln{\cos \left( \frac{\pi}{2} - \psi \right)} \, d\psi & \explnspaceiii \theta & = \frac{\pi}{2} - \psi \\		% https://www.overleaf.com/learn/latex/Brackets_and_Parentheses
+& = \int_{0}^{\pi / 2} \ln{\cos \left( \frac{\pi}{2} - \psi \right)} \, d\psi \\
+& = \int_{0}^{\pi / 2} \ln \sin \psi \, d\psi \\
+& = \int_{0}^{\pi / 2} \ln \left( 2 \sin \frac{\psi}{2} \cos \frac{\psi}{2} \right) \, d\psi \\
+& = \int_{0}^{\pi / 2} \left( \ln 2 + \ln \sin \frac{\psi}{2} + \ln \cos \frac{\psi}{2} \right) \, d\psi \\
+& = \int_{0}^{\pi / 2} \ln 2 \, d\psi + \int_{0}^{\pi / 2} \ln \sin \frac{\psi}{2} \, d\psi + \int_{0}^{\pi / 2} \ln \cos \frac{\psi}{2} \, d\psi \\
+& = \psi \ln 2 \biggr\rvert_{0}^{\pi / 2} + \int_{\pi / 2}^{\pi / 4} -2 \ln \sin \left( \frac{\pi}{2} - \theta \right) \, d\theta + \int_{0}^{\pi / 2} \ln \cos \frac{\psi}{2} \, d\psi & \explnspaceiii \frac{\psi}{2} & = \frac{\pi}{2} - \theta \\
+& = \frac{\pi}{2} \ln 2 + 2 \int_{\pi / 4}^{\pi / 2} \ln \cos \theta \, d\theta + \int_{0}^{\pi / 2} \ln \cos \frac{\psi}{2} \, d\psi \\
+& = \frac{\pi}{2} \ln 2 + 2 \int_{\pi / 4}^{\pi / 2} \ln \cos \theta \, d\theta + \int_{0}^{\pi / 4} 2 \ln \cos \theta \, d\theta & \explnspaceiii \frac{\psi}{2} & = \theta \\
+& = \frac{\pi}{2} \ln 2 + 2 \int_{\pi / 4}^{\pi / 2} \ln \cos \theta \, d\theta + 2 \int_{0}^{\pi / 4} \ln \cos \theta \, d\theta \\
+& = \frac{\pi}{2} \ln 2 + 2 \left( \int_{0}^{\pi / 4} \ln \cos \theta \, d\theta + \int_{\pi / 4}^{\pi / 2} \ln \cos \theta \, d\theta \right) \\
+& = \frac{\pi}{2} \ln 2 + 2 \int_{0}^{\pi / 2} \ln \cos \theta \, d\theta \\
+& = \frac{\pi}{2} \ln 2 + 2 I_2
+\end{aligned}$
+\\ \\ \\
+\par\noindent
+$\begin{aligned}
+I_2 = -\frac{\pi}{2} \ln 2
+\end{aligned}$
+\\ \\
+\par\noindent
+{
+\setlength{\abovedisplayskip}{0pt}
+\begin{fleqn}
+\begin{alignat*}{2}
+I_3 & = \int_{-\pi / 2}^{0} \ln \cos \theta \, d\theta \\
+& = \int_{\pi / 2}^{0} -\ln \cos \psi \, d\psi & \explnspaceiv \theta & = -\psi \\
+& = \int_{0}^{\pi / 2} \ln \cos \psi \, d\psi \\
+& = \int_{0}^{\pi / 2} \ln \cos \theta \, d\theta & \explnspaceiv \psi & = \theta \\
+& = I_2 \\
+& = -\frac{\pi}{2} \ln 2
+\end{alignat*}
+\end{fleqn}
+}
+\par\noindent
+$\begin{aligned}
+\int_{0}^{4} \frac{\ln{x}}{\sqrt{4x - x^2}} \, dx & = \pi \ln 2 + \int_{-\pi / 2}^{\pi / 2} \ln (1 + \sin \theta) \, d\theta \\
+& = \pi \ln 2 + I_1 \\
+& = \pi \ln 2 + \int_{-\pi /2 }^{\pi / 2} \ln \cos \theta \, d\theta \\
+& = \pi \ln 2 + \int_{-\pi / 2}^{0} \ln \cos \theta \, d\theta + \int_{0}^{\pi / 2} \ln \cos \theta \, d\theta \\
+& = \pi \ln 2 + I_3 + I_2 \\
+& = \pi \ln 2 - \frac{\pi}{2} \ln 2 - \frac{\pi}{2} \ln 2 \\
+& = 0
+\end{aligned}$
 \end{document}
 
 % References:
 % 1. https://tex.stackexchange.com/questions/207397/left-aligned-equations
+% 2. https://tex.stackexchange.com/questions/403331/how-to-remove-unnecessary-spacing-in-flalign
+% 3. https://www.overleaf.com/learn/latex/Brackets_and_Parentheses
