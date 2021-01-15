@@ -1,0 +1,50 @@
+\documentclass{article}
+
+\usepackage{amsmath}					% For the aligned environment
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\explnspacei}{\hspace{0in}}		% Space to be added before explanation in equations
+\newcommand{\explnspaceii}{\hspace{0in}}
+
+\allowdisplaybreaks
+
+\begin{document}
+
+\noindent
+This integral appears in problem 62 on page 360 of \textit{A Treatise on the Integral Calculus, Volume II}, by Joseph Edwards.
+\\
+\par\noindent
+$\begin{aligned}
+\int_0^4 \frac{\ln{x}}{\sqrt{4x - x^2}} \, dx & = \int_0^4 \frac{\ln{x}}{\sqrt{4 - 4 + 4x - x^2}} \, dx \\		% \mathrm{d}x
+& = \int_0^4 \frac{\ln{x}}{\sqrt{4 - (x^2 - 4x + 4)}} \, dx \\
+& = \int_0^4 \frac{\ln{x}}{\sqrt{4 - (x - 2) ^ 2}} \, dx \\
+& = \int_{-\pi / 2}^{\pi / 2} \frac{2 \ln{(2 + 2 \sin \theta)}}{\sqrt{4 - 4 \sin^2 \theta}} \cos \theta \, d\theta & \explnspacei x - 2 = 2 \sin \theta \\
+& = \int_{-\pi / 2}^{\pi / 2} \ln{(2(1 + \sin \theta))} \, d\theta & \explnspacei \text{Simplification} \\
+& = \int_{-\pi / 2}^{\pi / 2} \ln{2} + \ln{(1 + \sin \theta)} \, d\theta \\
+& = \theta \ln 2 \biggr\rvert_{-\pi / 2}^{\pi / 2} + \int_{-\pi / 2}^{\pi / 2} \ln{(1 + \sin \theta)} \, d\theta \\	% \big, \bigr, \Bigr and \Biggr are also available.
+& = \pi \ln 2 + \int_{-\pi / 2}^{\pi / 2} \ln{(1 + \sin \theta)} \, d\theta
+\end{aligned}$
+\\ \\ \\
+\par\noindent
+$\begin{aligned}
+I_1 & = \int_{-\pi / 2}^{\pi / 2} \ln{(1 + \sin \theta)} \, d\theta \\
+& = \int_{\pi / 2}^{-\pi / 2} -\ln{(1 - \sin \phi)} \, d\phi & \explnspaceii \theta & = - \phi \\
+& = \int_{-\pi / 2}^{\pi / 2} \ln{(1 - \sin \phi)} \, d\phi \\
+& = \int_{-\pi / 2}^{\pi / 2} \ln{(1 - \sin \theta)} \, d\theta & \explnspaceii \phi & = \theta
+\end{aligned}$
+\\ \\ \\
+\par\noindent
+$\begin{aligned}
+2I_1 & = \int_{-\pi / 2}^{\pi / 2} \ln{(1 + \sin \theta)} \, d\theta + \int_{-\pi / 2}^{\pi / 2} \ln{(1 - \sin \theta)} \, d\theta \\
+& = \int_{-\pi / 2}^{\pi / 2} \ln{(1 + \sin \theta)} + \ln{(1 - \sin \theta)} \, d\theta \\
+& = \int_{-\pi / 2}^{\pi / 2} \ln{\{(1 + \sin \theta)(1 - \sin \theta)\}} \, d\theta \\
+& = \int_{-\pi / 2}^{\pi / 2} \ln{(1 - \sin^2 \theta)} \, d\theta \\
+& = \int_{-\pi / 2}^{\pi / 2} \ln{\cos^2 \theta} \, d\theta \\
+& = \int_{-\pi / 2}^{\pi / 2} 2 \ln{\cos \theta} \, d\theta \\
+& = 2 \int_{-\pi / 2}^{\pi / 2} \ln{\cos \theta} \, d\theta
+\end{aligned}$
+
+\end{document}
+
+% References:
+% 1. https://tex.stackexchange.com/questions/207397/left-aligned-equations
