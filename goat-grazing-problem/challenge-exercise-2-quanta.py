@@ -1,0 +1,66 @@
+# This program draws the grazing area for the challenge in exercise 2 of the following article:
+#   https://www.quantamagazine.org/solve-math-equations-that-are-stubborn-as-a-goat-20210506/
+#       Archived at: https://web.archive.org/web/20230615014008/https://www.quantamagazine.org/solve-math-equations-that-are-stubborn-as-a-goat-20210506/
+# 
+# To see the challenge, click on the link titled "Click for Answer 2".
+# 
+# Note that all lengths in the program have been scaled by 10. So, 4 units are actually drawn as 40 units.
+
+import math
+import turtle
+
+t = turtle.Turtle()
+t.speed(5) # 1:slowest, 3:slow, 5:normal, 10:fast, 0:fastest
+t.forward(40)
+t.left(90)
+t.forward(40)
+t.left(90)
+t.forward(40)
+t.left(90)
+t.forward(40)
+t.left(180)
+t.forward(40)
+t.right(90)
+t.forward(40)
+t.forward(100)
+t.left(90)
+t.circle(100, 180)
+t.left(90)
+t.forward(60)
+t.left(180)
+t.forward(60)
+t.left(90)
+t.circle(60, 90)
+t.left(90)
+t.forward(20)
+t.left(180)
+t.forward(20)
+t.left(90)
+t.circle(20, 90)
+t.right(90)
+t.forward(20)
+t.left(90)
+t.forward(40)
+t.right(90)
+t.forward(100)
+t.right(90)
+t.circle(-100, 90)
+t.right(90)
+t.forward(60)
+t.right(180)
+t.forward(60)
+t.right(90)
+t.circle(-60, 90)
+t.right(90)
+t.forward(20)
+t.right(180)
+t.forward(20)
+t.right(90)
+t.circle(-20, 90)
+t.right(90)
+t.forward(40)
+t.right(135)
+t.forward(60*math.sqrt(2))
+t.right(180)
+t.forward(60*math.sqrt(2))
+t.forward(60*math.sqrt(2) - 20*math.sqrt(2))
